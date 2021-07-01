@@ -3,22 +3,21 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const StaffStatus = ({ title, count, dis, to }) => {
+const StaffStatus = ({ title, count, dis, to, stfType }) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.subView}>
-      <Text style={styles.viewText}>
-        {title}
-        {count}
-      </Text>
+      <Text style={styles.viewText}>{title + ": " + count}</Text>
 
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {dis && <MaterialIcons name="lock-outline" size={24} color="red" />}
         <TouchableOpacity
           style={styles.btn}
           disabled={dis}
-          onPress={() => navigation.navigate(to)}
+          onPress={() =>
+            navigation.navigate(to, { paramKey: stfType, paramKey1: title })
+          }
         >
           <Text style={styles.btnText}>View</Text>
         </TouchableOpacity>

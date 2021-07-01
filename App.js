@@ -33,7 +33,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={globalScreenOptions}
-        initialRouteName="StaffDashboard"
+        // initialRouteName="list"
       >
         <Stack.Screen
           name="welcome"

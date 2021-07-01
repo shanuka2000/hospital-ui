@@ -16,7 +16,7 @@ const StaffDashboard = ({ navigation }) => {
 
   const [firstName, setFirstName] = useState("Shanuka");
   const [lastName, setLastName] = useState("Peiris");
-  const [profession, setProfession] = useState("Admission Officer");
+  const [profession, setProfession] = useState("Doctor");
 
   //   useLayoutEffect(() => {
   //     navigation.setOptions({
@@ -81,31 +81,54 @@ const StaffDashboard = ({ navigation }) => {
       {/* Patient Overall information */}
       {profession == "Doctor" ? (
         <View style={styles.patientInfo}>
-          <StaffStatus title="Pneumonia Positive: " count="12" to="list" />
-          <StaffStatus title="Pneumonia Negative: " count="24" to="list" />
-          <StaffStatus title="Patient Count: " count="36" dis="false" />
+          <StaffStatus
+            title="Pneumonia Positive"
+            count="12"
+            to="list"
+            stfType="Doctor"
+          />
+          <StaffStatus
+            title="Pneumonia Negative"
+            count="24"
+            to="list"
+            stfType="Doctor"
+          />
+          <StaffStatus
+            title="Patient Count"
+            count="36"
+            dis="false"
+            stfType="Doctor"
+          />
         </View>
       ) : profession == "Radiographer" ? (
         <View style={styles.patientInfo}>
           <StaffStatus
-            title="X-ray image Requesting patients: "
+            title="X-ray image Requesting patients"
             count="12"
             to="requesting"
+            stfType="Radiographer"
           />
-          <StaffStatus title="Patient Count: " count="36" dis="false" />
+          <StaffStatus
+            title="Patient Count"
+            count="36"
+            dis="false"
+            stfType="Radiographer"
+          />
         </View>
       ) : (
         <View style={styles.patientInfo}>
           <StaffStatus
-            title="Admission requesting Patients: "
+            title="Admission requesting Patients"
             count="12"
             to="list"
+            stfType="Admin"
           />
-          <StaffStatus title="Admitted Patients: " count="24" dis="false" />
+          <StaffStatus title="Admitted Patients" count="24" dis="false" />
           <StaffStatus
-            title="Discharge Approved Patents: "
+            title="Discharge Approved Patents"
             count="36"
             to="list"
+            stfType="Admin"
           />
         </View>
       )}
