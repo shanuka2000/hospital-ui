@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,13 +10,13 @@ import { Avatar, Image } from "react-native-elements";
 import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import StaffStatus from "./components/StaffStatus";
-import { render } from "react-dom";
 
 const StaffDashboard = ({ navigation }) => {
   const name = "Namal Sundram";
   const prof = "Doctor";
   const numNotification = "1";
-  const [ss, setss] = useState("h");
+  const [ss, setss] = useState("p");
+  const [profession, setProfession] = useState("Admin");
 
   //   useLayoutEffect(() => {
   //     navigation.setOptions({
@@ -79,11 +79,24 @@ const StaffDashboard = ({ navigation }) => {
       </Text>
 
       {/* Patient Overall information */}
-      <View style={styles.patientInfo}>
-        <StaffStatus title="Pneumonia Positive: " count="12" />
-        <StaffStatus title="Pneumonia Negative: " count="24" />
-        <StaffStatus title="Patient Count: " count="36" dis="false" />
-      </View>
+      {profession == "Doctor" ? (
+        <View style={styles.patientInfo}>
+          <StaffStatus title="Pneumonia Positive: " count="12" />
+          <StaffStatus title="Pneumonia Negative: " count="24" />
+          <StaffStatus title="Patient Count: " count="36" dis="false" />
+        </View>
+      ) : profession == "Radiographer" ? (
+        <View style={styles.patientInfo}>
+          <StaffStatus title="X-ray image Requesting patients: " count="12" />
+          <StaffStatus title="Patient Count: " count="36" dis="false" />
+        </View>
+      ) : (
+        <View style={styles.patientInfo}>
+          <StaffStatus title="Admission requesting Patients: " count="12" />
+          <StaffStatus title="Admitted Patients: " count="24" dis="false" />
+          <StaffStatus title="Discharge Approved Patents: " count="36" />
+        </View>
+      )}
 
       {/* Image */}
       <View style={{ alignItems: "center" }}>
@@ -92,7 +105,6 @@ const StaffDashboard = ({ navigation }) => {
           style={{ width: 200, height: 200 }}
         />
       </View>
-      {display}
     </View>
   );
 };
