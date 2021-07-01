@@ -17,6 +17,7 @@ import Notification from "./screens/Notification";
 import Symptoms from "./screens/Symptoms";
 import SymptomMain from "./screens/SymptomMain";
 import Result from "./screens/Result";
+import DisplayLists from "./screens/DisplayLists";
 
 const Stack = createStackNavigator();
 
@@ -95,6 +96,12 @@ export default function App() {
           component={StaffDashboard}
           //   screenOptions={globalScreenOptions}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="list"
+          component={DisplayLists}
+          //   screenOptions={globalScreenOptions}
+          // options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

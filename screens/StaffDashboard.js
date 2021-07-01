@@ -12,11 +12,11 @@ import { StatusBar } from "expo-status-bar";
 import StaffStatus from "./components/StaffStatus";
 
 const StaffDashboard = ({ navigation }) => {
-  const name = "Namal Sundram";
-  const prof = "Doctor";
   const numNotification = "1";
-  const [ss, setss] = useState("p");
-  const [profession, setProfession] = useState("Admin");
+
+  const [firstName, setFirstName] = useState("Shanuka");
+  const [lastName, setLastName] = useState("Peiris");
+  const [profession, setProfession] = useState("Admission Officer");
 
   //   useLayoutEffect(() => {
   //     navigation.setOptions({
@@ -62,8 +62,8 @@ const StaffDashboard = ({ navigation }) => {
             uri: "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           }}
         />
-        <Text style={styles.stName}>{name}</Text>
-        <Text style={styles.stProf}>{prof}</Text>
+        <Text style={styles.stName}>{firstName + " " + lastName}</Text>
+        <Text style={styles.stProf}>{profession}</Text>
       </View>
 
       <Text
@@ -81,20 +81,32 @@ const StaffDashboard = ({ navigation }) => {
       {/* Patient Overall information */}
       {profession == "Doctor" ? (
         <View style={styles.patientInfo}>
-          <StaffStatus title="Pneumonia Positive: " count="12" />
-          <StaffStatus title="Pneumonia Negative: " count="24" />
+          <StaffStatus title="Pneumonia Positive: " count="12" to="list" />
+          <StaffStatus title="Pneumonia Negative: " count="24" to="list" />
           <StaffStatus title="Patient Count: " count="36" dis="false" />
         </View>
       ) : profession == "Radiographer" ? (
         <View style={styles.patientInfo}>
-          <StaffStatus title="X-ray image Requesting patients: " count="12" />
+          <StaffStatus
+            title="X-ray image Requesting patients: "
+            count="12"
+            to="requesting"
+          />
           <StaffStatus title="Patient Count: " count="36" dis="false" />
         </View>
       ) : (
         <View style={styles.patientInfo}>
-          <StaffStatus title="Admission requesting Patients: " count="12" />
+          <StaffStatus
+            title="Admission requesting Patients: "
+            count="12"
+            to="list"
+          />
           <StaffStatus title="Admitted Patients: " count="24" dis="false" />
-          <StaffStatus title="Discharge Approved Patents: " count="36" />
+          <StaffStatus
+            title="Discharge Approved Patents: "
+            count="36"
+            to="list"
+          />
         </View>
       )}
 

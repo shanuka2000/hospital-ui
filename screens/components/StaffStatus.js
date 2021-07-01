@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const StaffStatus = ({ title, count, dis }) => {
+const StaffStatus = ({ title, count, dis, to }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.subView}>
       <Text style={styles.viewText}>
@@ -12,7 +15,11 @@ const StaffStatus = ({ title, count, dis }) => {
 
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         {dis && <MaterialIcons name="lock-outline" size={24} color="red" />}
-        <TouchableOpacity style={styles.btn} disabled={dis}>
+        <TouchableOpacity
+          style={styles.btn}
+          disabled={dis}
+          onPress={() => navigation.navigate(to)}
+        >
           <Text style={styles.btnText}>View</Text>
         </TouchableOpacity>
       </View>
